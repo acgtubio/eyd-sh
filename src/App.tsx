@@ -9,8 +9,9 @@ const App: Component = () => {
     <>
       <Header />
 
-      <main>
-        <ContentLine lineCount={0} content="Hello World" isSelected={false} />
+      <main class="mt-8">
+        <ContentLine lineCount={0} content="Eyd's Portfolio" isSelected={false} />
+        <ContentLine lineCount={1} content="Hello World" isSelected={false} />
       </main>
     </>
   );
