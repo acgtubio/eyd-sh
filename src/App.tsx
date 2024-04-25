@@ -10,8 +10,9 @@ const App: Component = () => {
       <Header />
 
       <main class="mt-8">
-        <ContentLine lineCount={0} content="Eyd's Portfolio" isSelected={false} />
-        <ContentLine lineCount={1} content="Hello World" isSelected={false} />
+        <ContentLine lineCount={0} content="Eyd's Portfolio" editable={false} />
+        <ContentLine lineCount={1} content="Hello World" editable={false} />
+        <ContentLine lineCount={2} content="" editable={true} />
       </main>
     </>
   );
