@@ -5,6 +5,7 @@ interface ContentLineProps {
   content: string,
   editable: boolean,
 }
+
 const ContentLine = (props: ContentLineProps) => {
   const { lineCount, content, editable } = props;
   let contentElement!: HTMLSpanElement;
