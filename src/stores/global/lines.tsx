@@ -42,8 +42,16 @@ export function LinesProvider(props) {
 		)
 	};
 
+	const updateContent = (lineNumber: number, content: string) => {
+		setContent('lines', lineNumber,
+			produce((line) => {
+				console.log(content);
+				line.content = content;
+			})
+		)
+	};
+
 	const addEmpty = (lineNumber: number) => {
-		console.log(lineNumber)
 		setContent('lines', lineNumber + 1, {
 			index: lineNumber + 1,
 			content: '',
@@ -53,7 +61,7 @@ export function LinesProvider(props) {
 
 	return (
 		<LinesContext.Provider
-			value={{ content, toggleEditable, addEmpty }}
+			value={{ content, toggleEditable, addEmpty, updateContent }}
 		>
 			{props.children}
 		</LinesContext.Provider>
