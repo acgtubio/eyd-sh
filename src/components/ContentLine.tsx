@@ -1,4 +1,4 @@
-import { JSX, createSignal, type Component } from "solid-js"
+import { JSX, createEffect, createSignal, type Component } from "solid-js"
 import { useLines } from "../stores/global/lines"
 
 interface ContentLineProps {
@@ -8,10 +8,10 @@ interface ContentLineProps {
 }
 
 const ContentLine = (props: ContentLineProps) => {
-  const { lineContent, toggleEditable, addEmpty, updateContent } = useLines();
+  const { content, toggleEditable, addEmpty, updateContent, updateSelectedLine } = useLines();
   const [lineValue, setLineValue] = createSignal<string>(props.content);
+  const [focused, setFocused] = createSignal<boolean>(false);
   let contentElement!: HTMLSpanElement;
-
 
   const disableEnter = (e: KeyboardEvent) => {
     if (e.key == 'Enter') {
@@ -31,8 +31,20 @@ const ContentLine = (props: ContentLineProps) => {
     console.log(window.getSelection());
   }
 
+  const focusOnContent = () => {
+    contentElement.focus()
+    updateSelectedLine(props.lineCount);
+  }
+
+  createEffect(() => {
+    setFocused(content.selectedLine === props.lineCount);
+  });
+
   return (
-    <div class="flex w-screen text-white px-14 py-2 hover:bg-zinc-800 active:bg-zinc-800" onClick={() => { contentElement.focus() }}>
+    <div
+      class={`flex w-screen text-white px-14 py-2 hover:bg-zinc-800 ${focused() ? "bg-zinc-800" : ""}`}
+      onClick={focusOnContent}
+    >
       <div class="pr-8">
         <h1>{props.lineCount}</h1>
       </div>
@@ -44,6 +56,7 @@ const ContentLine = (props: ContentLineProps) => {
           onKeyPress={disableEnter}
           onInput={updateValue}
           onClick={updateCaretPosition}
+          onFocusOut={() => setFocused(false)}
         >
           {props.content}
         </span>

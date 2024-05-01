@@ -11,6 +11,7 @@ type ContentLine = {
 
 type LineStore = {
 	lines: ContentLine[],
+	selectedLine: number | null,
 }
 
 export function LinesProvider(props) {
@@ -31,7 +32,8 @@ export function LinesProvider(props) {
 				content: '',
 				editable: true,
 			}
-		]
+		],
+		selectedLine: null
 	});
 
 	const toggleEditable = (lineNumber: number) => {
@@ -59,9 +61,13 @@ export function LinesProvider(props) {
 		});
 	}
 
+	const updateSelectedLine = (lineNumber: number) => {
+		setContent('selectedLine', lineNumber);
+	}
+
 	return (
 		<LinesContext.Provider
-			value={{ content, toggleEditable, addEmpty, updateContent }}
+			value={{ content, toggleEditable, addEmpty, updateContent, updateSelectedLine }}
 		>
 			{props.children}
 		</LinesContext.Provider>

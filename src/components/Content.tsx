@@ -3,7 +3,7 @@ import { useLines } from "../stores/global/lines";
 import { For, createEffect } from "solid-js";
 
 const Content = () => {
-  const { content, addEmpty, toggleEditable, updateContent } = useLines();
+  const { content, addEmpty, toggleEditable, updateContent, updateSelectedLine } = useLines();
 
   return (
     <>
