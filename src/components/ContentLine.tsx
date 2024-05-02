@@ -34,6 +34,7 @@ const ContentLine = (props: ContentLineProps) => {
   const focusOnContent = () => {
     contentElement.focus()
     updateSelectedLine(props.lineCount);
+    setFocused(content.selectedLine === props.lineCount);
   }
 
   createEffect(() => {
