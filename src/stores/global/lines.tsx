@@ -47,7 +47,6 @@ export function LinesProvider(props) {
 	const updateContent = (lineNumber: number, content: string) => {
 		setContent('lines', lineNumber,
 			produce((line) => {
-				console.log(content);
 				line.content = content;
 			})
 		)
@@ -59,6 +58,7 @@ export function LinesProvider(props) {
 			content: '',
 			editable: true
 		});
+		updateSelectedLine(lineNumber + 1);
 	}
 
 	const updateSelectedLine = (lineNumber: number) => {

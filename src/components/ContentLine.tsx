@@ -14,13 +14,18 @@ const ContentLine = (props: ContentLineProps) => {
   let contentElement!: HTMLSpanElement;
 
   const disableEnter = (e: KeyboardEvent) => {
-    if (e.key == 'Enter') {
-      e.preventDefault();
-      toggleEditable(props.lineCount);
-      addEmpty(props.lineCount);
-      console.log(contentElement.textContent);
-      updateContent(props.lineCount, contentElement.textContent);
+    if (e.key != 'Enter') {
+      return;
     }
+    e.preventDefault();
+
+    if (contentElement.textContent === "") {
+      return;
+    }
+
+    toggleEditable(props.lineCount);
+    addEmpty(props.lineCount);
+    updateContent(props.lineCount, contentElement.textContent);
   }
 
   const updateValue: JSX.EventHandlerUnion<HTMLSpanElement, InputEvent> = (e) => {
@@ -31,20 +36,24 @@ const ContentLine = (props: ContentLineProps) => {
     console.log(window.getSelection());
   }
 
+  const onContentClick = () => {
+    updateSelectedLine(props.lineCount);
+    focusOnContent();
+  }
+
   const focusOnContent = () => {
     contentElement.focus()
-    updateSelectedLine(props.lineCount);
     setFocused(content.selectedLine === props.lineCount);
   }
 
   createEffect(() => {
-    setFocused(content.selectedLine === props.lineCount);
+    focusOnContent();
   });
 
   return (
     <div
-      class={`flex w-screen text-white px-14 py-2 hover:bg-zinc-800 ${focused() ? "bg-zinc-800" : ""}`}
-      onClick={focusOnContent}
+      class={`flex w-screen text-white px-14 py-2 hover:bg-zinc-500 ${focused() ? "bg-zinc-800" : ""}`}
+      onClick={onContentClick}
     >
       <div class="pr-8">
         <h1>{props.lineCount}</h1>
