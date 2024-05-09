@@ -12,12 +12,14 @@ const Ls = () => {
   const projects: LsItem[] = ls();
 
   return (
-    <div>
+    <div class="space-y-5">
       <For each={projects}>{(lsItem, i) => {
-        <div>
-          <a href={lsItem.url}><h1>{lsItem.name}</h1></a>
-          <p>{lsItem.description}</p>
-        </div>
+        return (
+          <div>
+            <a href={lsItem.url}><h1 class="text-lg">{lsItem.name}</h1></a>
+            <p class="text-sm">{lsItem.description}</p>
+          </div>
+        )
       }}
       </For>
     </div>

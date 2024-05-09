@@ -3,24 +3,33 @@ import { createContext, useContext } from "solid-js";
 
 const LinesContext = createContext();
 
-type TextContent = {
+type ContentLine = {
   index: number,
-  content: string,
+  content: string | CommandResult,
+  type: ContentType,
   editable: boolean,
 }
 
+// TODO: Implement this to ContentLine.
+type TextContent = {
+  text: string,
+  size: string,
+}
+
 type CommandResult = {
-  type: string,
   name: string,
   url: string,
   description: string,
 }
 
-type ContentLine = TextContent | CommandResult;
-
 type LineStore = {
   lines: ContentLine[],
   selectedLine: number | null,
+}
+
+export enum ContentType {
+  Text,
+  Command
 }
 
 export function LinesProvider(props) {
@@ -28,16 +37,19 @@ export function LinesProvider(props) {
     lines: [
       {
         index: 0,
+        type: ContentType.Text,
         content: 'Eyd\'s Portfolio',
         editable: false,
       },
       {
         index: 1,
+        type: ContentType.Text,
         content: 'Hello World',
         editable: false,
       },
       {
         index: 2,
+        type: ContentType.Text,
         content: '',
         editable: true,
       }
@@ -48,14 +60,12 @@ export function LinesProvider(props) {
   const toggleEditable = (lineNumber: number) => {
     setContent('lines', lineNumber,
       produce((line) => {
-        if typeof line() === "TextContent" {
-          line.editable = !line.editable
-        }
+        line.editable = !line.editable
       })
     )
   };
 
-  const updateContent = (lineNumber: number, content: string) => {
+  const updateTextContent = (lineNumber: number, content: string) => {
     setContent('lines', lineNumber,
       produce((line) => {
         line.content = content;
@@ -63,9 +73,19 @@ export function LinesProvider(props) {
     )
   };
 
+  const addCommandResultContent = (lineNumber: number, content: CommandResult) => {
+    setContent('lines', lineNumber + 1, {
+      type: ContentType.Command,
+      index: lineNumber + 1,
+      content: content,
+      editable: false
+    });
+  };
+
   const addEmpty = (lineNumber: number) => {
     setContent('lines', lineNumber + 1, {
       index: lineNumber + 1,
+      type: ContentType.Text,
       content: '',
       editable: true
     });
@@ -78,7 +98,7 @@ export function LinesProvider(props) {
 
   return (
     <LinesContext.Provider
-      value={{ content, toggleEditable, addEmpty, updateContent, updateSelectedLine }}
+      value={{ content, toggleEditable, addEmpty, updateTextContent, updateSelectedLine, addCommandResultContent }}
     >
       {props.children}
     </LinesContext.Provider>

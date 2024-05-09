@@ -9,7 +9,7 @@ const Content = () => {
     <>
       <For each={content.lines}>
         {(line, i) => {
-          return <ContentLine lineCount={line.index} content={line.content} editable={line.editable} />
+          return <ContentLine lineCount={line.index} content={line.content} editable={line.editable} type={line.type} />
         }}
       </For >
     </>
