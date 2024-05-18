@@ -38,17 +38,11 @@ export function LinesProvider(props) {
       {
         index: 0,
         type: ContentType.Text,
-        content: 'Eyd\'s Portfolio',
-        editable: false,
-      },
-      {
-        index: 1,
-        type: ContentType.Text,
         content: 'Hello World',
         editable: false,
       },
       {
-        index: 2,
+        index: 1,
         type: ContentType.Text,
         content: '',
         editable: true,

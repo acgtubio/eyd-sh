@@ -13,6 +13,7 @@ const Ls = () => {
 
   return (
     <div class="space-y-5">
+      <h1 class="text-2xl">My Projects</h1>
       <For each={projects}>{(lsItem, i) => {
         return (
           <div>
