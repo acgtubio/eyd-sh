@@ -1,5 +1,5 @@
 import { JSX, createEffect, createSignal, type Component } from "solid-js"
-import { ContentType, useLines } from "../stores/global/lines"
+import { ContentType, useLines } from "~/stores/lines"
 import Command, { isCommand } from "../commands/commands"
 import { Switch, Match } from "solid-js"
 

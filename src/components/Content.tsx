@@ -1,6 +1,6 @@
-import ContentLine from "./ContentLine";
-import { useLines } from "../stores/global/lines";
+import { useLines } from "~/stores/lines";
 import { For, createEffect } from "solid-js";
+import ContentLine from "./ContentLine";
 
 const Content = () => {
   const { content, addEmpty, toggleEditable, updateContent, updateSelectedLine } = useLines();

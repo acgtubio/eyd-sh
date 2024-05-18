@@ -13,16 +13,19 @@ const Ls = () => {
 
   return (
     <div class="space-y-5">
-      <h1 class="text-2xl">My Projects</h1>
+
+      <h1 class="text-3xl font-bold">My Projects</h1>
+
       <For each={projects}>{(lsItem, i) => {
         return (
-          <div>
-            <a href={lsItem.url}><h1 class="text-lg">{lsItem.name}</h1></a>
-            <p class="text-sm">{lsItem.description}</p>
+          <div class="px-6 py-6 border rounded-lg border-neutral-500">
+            <a href={lsItem.url}><h1 class="text-lg font-bold">{lsItem.name}</h1></a>
+            <p class="text-sm mt-2">{lsItem.description}</p>
           </div>
         )
       }}
       </For>
+
     </div>
   );
 }
