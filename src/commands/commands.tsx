@@ -8,7 +8,6 @@ const commandMapping = {
 }
 
 const Command = (props) => {
-  console.log(props.name);
   return (
     <div>
       <Dynamic component={commandMapping[props.name]} />

@@ -29,7 +29,8 @@ type LineStore = {
 
 export enum ContentType {
   Text,
-  Command
+  Command,
+  InvalidCommand
 }
 
 export function LinesProvider(props) {
@@ -38,7 +39,7 @@ export function LinesProvider(props) {
       {
         index: 0,
         type: ContentType.Text,
-        content: 'Hello World',
+        content: 'Hello World, Adrian here. This is my personal site, and as you can see, it is still under construction. Also, this design was inspired from terminal.shop.',
         editable: false,
       },
       {
@@ -76,6 +77,15 @@ export function LinesProvider(props) {
     });
   };
 
+  const addError = (lineNumber: number, content: string) => {
+    setContent('lines', lineNumber + 1, {
+      type: ContentType.InvalidCommand,
+      index: lineNumber + 1,
+      content: content,
+      editable: false
+    })
+  }
+
   const addEmpty = (lineNumber: number) => {
     setContent('lines', lineNumber + 1, {
       index: lineNumber + 1,
@@ -92,7 +102,7 @@ export function LinesProvider(props) {
 
   return (
     <LinesContext.Provider
-      value={{ content, toggleEditable, addEmpty, updateTextContent, updateSelectedLine, addCommandResultContent }}
+      value={{ content, toggleEditable, addEmpty, updateTextContent, updateSelectedLine, addCommandResultContent, addError }}
     >
       {props.children}
     </LinesContext.Provider>

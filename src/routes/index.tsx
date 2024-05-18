@@ -6,10 +6,9 @@ import Content from "~/components/Content";
 export default function Home() {
   return (
     <>
-      <Header />
+      <Title>Eyd.sh | Under Construction</Title>
 
-      <main class="mt-3">
-        <Title>Eyd.sh</Title>
+      <main class="mt-5">
 
         <LinesProvider>
           <Content />

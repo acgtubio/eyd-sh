@@ -1,6 +1,7 @@
 import { JSX, createEffect, createSignal, type Component } from "solid-js"
 import { ContentType, useLines } from "~/stores/lines"
 import Command, { isCommand } from "../commands/commands"
+import InvalidCommand from "~/commands/invalid"
 import { Switch, Match } from "solid-js"
 
 interface ContentLineProps {
@@ -11,7 +12,7 @@ interface ContentLineProps {
 }
 
 const ContentLine = (props: ContentLineProps) => {
-  const { content, toggleEditable, addEmpty, updateTextContent, updateSelectedLine, addCommandResultContent } = useLines();
+  const { content, toggleEditable, addEmpty, updateTextContent, updateSelectedLine, addCommandResultContent, addError } = useLines();
   const [lineValue, setLineValue] = createSignal<string>(props.content);
   const [focused, setFocused] = createSignal<boolean>(false);
   let contentElement!: HTMLSpanElement;
@@ -40,7 +41,8 @@ const ContentLine = (props: ContentLineProps) => {
       return;
     }
 
-    addEmpty(props.lineCount);
+    addError(props.lineCount, content);
+    addEmpty(props.lineCount + 1);
     updateTextContent(props.lineCount, contentElement.textContent);
   }
 
@@ -54,6 +56,9 @@ const ContentLine = (props: ContentLineProps) => {
 
   const onContentClick = () => {
     updateSelectedLine(props.lineCount);
+    if (props.type !== ContentType.Text) {
+      return;
+    }
     focusOnContent();
   }
 
@@ -63,21 +68,21 @@ const ContentLine = (props: ContentLineProps) => {
   }
 
   createEffect(() => {
-    if (props.type === ContentType.Command)
+    if (props.type !== ContentType.Text)
       return;
     focusOnContent();
   });
 
   return (
     <div
-      class={`flex w-screen text-white px-14 py-2 hover:bg-zinc-500 ${focused() ? "bg-zinc-800" : ""}`}
+      class={`flex w-screen text-white px-14 py-2 ${props.type === ContentType.Text && "hover:bg-zinc-500"} ${focused() ? "bg-zinc-800" : ""}`}
       onClick={onContentClick}
     >
-      <div class="pr-8">
-        <h1>{props.lineCount}</h1>
+      <div class="pr-5">
+        <h1 class="text-xl">{props.type === ContentType.Text && "$"}</h1>
       </div>
-      <div class="w-100 flex">
-        <Switch>
+      <div class={`w-100 flex ${props.type !== ContentType.Text && "my-2"}`}>
+        <Switch fallback={<InvalidCommand command={props.content} />}>
 
           <Match when={props.type === ContentType.Text}>
             <span
