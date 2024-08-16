@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/acgtubio/eyd-sh/templates"
+	"github.com/acgtubio/eyd-sh/view/templates"
 	"net/http"
 )
 
