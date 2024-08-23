@@ -8,5 +8,5 @@ import (
 type IndexHandler struct{}
 
 func (h IndexHandler) HandleIndexShow(w http.ResponseWriter, r *http.Request) {
-	render(w, r, pages.Home())
+	render(w, r, pages.Home(pages.Skills()))
 }

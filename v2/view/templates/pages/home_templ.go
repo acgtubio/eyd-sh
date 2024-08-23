@@ -65,7 +65,7 @@ func customScripts() templ.Component {
 	})
 }
 
-func Home() templ.Component {
+func Home(content templ.Component) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
@@ -95,7 +95,7 @@ func Home() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"text-white flex w-full text-center justify-center py-20 flex-col\"><div class=\"relative\"><h1 class=\"font-bold text-6xl py-6 px-3 login-link-main\">Eyd.sh</h1><div class=\"login-link\"><a>Login</a></div></div><div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"text-white flex w-full text-center justify-center py-20 flex-col\"><div class=\"relative\"><h1 class=\"font-bold text-6xl py-6 px-3 login-link-main\">Eyd.sh</h1><div class=\"login-link\"><a hx-get=\"/login\" hx-target=\"#content\">Login</a></div></div><div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -103,7 +103,15 @@ func Home() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section><section class=\"text-white flex w-full text-center justify-center pb-20 flex-col\"><p>Hi! I am Adrian, a full-stack software developer with expertise in Java, Rust, and Go.</p></section><section class=\"text-white flex w-full text-center justify-center pb-20 flex-row px-56 space-x-9\"><div class=\"w-1/2 border border-slate-500 rounded-lg\"><h1 class=\"text-3xl\">Skills</h1></div><div class=\"w-1/2 border border-slate-500 rounded-lg\"><h1>Projects</h1></div></section>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section><section class=\"text-white w-full text-center justify-center pb-20\" id=\"content\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = content.Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

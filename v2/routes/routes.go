@@ -14,6 +14,8 @@ func HandleRoutes() http.Handler {
 
 	indexHandler := handlers.IndexHandler{}
 	mux.HandleFunc("/", indexHandler.HandleIndexShow)
+	loginHandler := handlers.LoginHandler{}
+	mux.HandleFunc("/login", loginHandler.HandleLoginShow)
 
 	return mux
 }
