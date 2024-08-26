@@ -7,6 +7,10 @@
   font-family: Montserrat;
 }
 
+#content {
+  max-width: 768px;
+}
+
 .login-link {
   position: absolute;
   display: flex;

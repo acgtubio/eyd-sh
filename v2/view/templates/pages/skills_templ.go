@@ -26,7 +26,7 @@ func Skills() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col pb-20\"><p>Hi! I am Adrian, a full-stack software developer with expertise in Java, Rust, and Go.</p></div><div class=\"flex pb-20 flex-row px-56 space-x-9\"><div class=\"w-1/2 border border-slate-500 rounded-lg\"><h1 class=\"text-3xl\">Skills</h1></div><div class=\"w-1/2 border border-slate-500 rounded-lg\"><h1>Projects</h1></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"flex flex-col pb-20\"><p>Hi! I am Adrian, a full-stack software developer with expertise in Java, Rust, and Go.</p></div><div class=\"flex pb-20 flex-col text-left\"><div class=\"p-7 w-full mb-8\"><h1 class=\"text-3xl font-bold\">Skills</h1></div><div class=\"p-7 w-full\"><h1 class=\"text-3xl font-bold\">Projects</h1></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
