@@ -7,10 +7,6 @@
   font-family: Montserrat;
 }
 
-#content {
-  max-width: 768px;
-}
-
 .login-link {
   position: absolute;
   display: flex;
@@ -32,4 +28,67 @@
   visibility: visible;
   top: -4rem;
   opacity: 1;
+}
+
+:root {
+  --x: 0;
+  --y: 0;
+  --xp: 0;
+  --yp: 0;
+  /* --hue: calc(0 + (var(--xp) * 500)); */
+  --hue: calc(0 + 1 * 500);
+  --bg: rgb(23, 23, 23);
+  --size: 150px;
+  --glow: radial-gradient(50% 50% at center,
+      /* hsl(var(--hue) 80% 85%), */
+      /* hsl(var(--hue) 80% 70%), */
+      hsl(var(--hue) 0% 35%),
+      hsl(var(--hue) 0% 30%),
+      transparent) calc((var(--x) * 1px) - (var(--size) * 0.5)) calc((var(--y) * 1px) - (var(--size) * 0.5)) / var(--size) var(--size) no-repeat fixed;
+}
+
+.skills-item {
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  /* box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset; */
+  /* cursor: pointer; */
+  background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    /* linear-gradient(black, black) padding-box, */
+    var(--glow),
+    linear-gradient(black, black) border-box;
+  transition: background-size 0.24s;
+  touch-action: none;
+  position: relative;
+  padding: 1rem 2rem;
+}
+
+.skills-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset; */
+  z-index: 2;
+  /* border: 4px solid transparent; */
+  border-radius: 1rem;
+}
+
+.skills-item h1 {
+  background: var(--glow), black;
+  background-clip: text;
+  /* color: transparent; */
+  width: 100%;
+  z-index: 2;
+  position: relative;
+  inset: 0;
+}
+
+.skills-item::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  filter: blur(40px);
+  border: 4px solid transparent;
+  background: var(--glow);
+  border-radius: 1rem;
 }

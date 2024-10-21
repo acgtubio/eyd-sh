@@ -9,7 +9,7 @@ import (
 func HandleRoutes() http.Handler {
 	mux := http.NewServeMux()
 
-	// Serves JS and CSS Files
+	// Serves JS, Images, and CSS Files
 	assets.MountAssets(mux)
 
 	indexHandler := handlers.IndexHandler{}

@@ -31,7 +31,7 @@ func customHeader() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link href=\"/assets/css/fontawesome.min.css\" rel=\"stylesheet\"><link href=\"/assets/css/brands.min.css\" rel=\"stylesheet\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<link href=\"/assets/css/fontawesome.min.css\" rel=\"stylesheet\"><link href=\"/assets/css/brands.min.css\" rel=\"stylesheet\"><link href=\"/assets/css/regular.min.css\" rel=\"stylesheet\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -95,7 +95,7 @@ func Home(content templ.Component) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"text-white flex w-full text-center justify-center py-20 flex-col\"><div class=\"relative\"><h1 class=\"font-bold text-6xl py-6 px-3 login-link-main\">Eyd.sh</h1><div class=\"login-link\"><a hx-get=\"/login\" hx-target=\"#content\">LOGIN</a></div></div><div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"text-white flex w-full text-center justify-center py-16 flex-col\"><div class=\"relative\"><h1 class=\"font-bold text-6xl py-6 px-3 login-link-main\">Eyd.sh</h1><div class=\"login-link\"><a hx-get=\"/login\" hx-target=\"#content\">LOGIN</a></div></div><div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
