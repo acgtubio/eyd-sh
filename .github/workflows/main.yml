@@ -19,7 +19,9 @@ jobs:
           go-version: '1.22.3'
 
       - name: Install dependencies
-        run: go mod tidy
+        run: |
+          cd eyd-sh/v2
+          go mod tidy
 
       - name: Build
         run: make build
