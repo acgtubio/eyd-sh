@@ -23,9 +23,6 @@ jobs:
           cd ./v2/
           go mod tidy
 
-      - name: Build
-        run: make build
-
   # Deploy Job
   deploy:
    
