@@ -35,14 +35,6 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.PAT }}
-
-      - name: Create GitHub deployment
-        uses: chrnorm/deployment-action@v2
-        id: deployment
-        with:
-          token: '${{ github.token }}'
-          environment-url: eyd.sh
-          environment: production
           
       - name: Set up SSH Key and Deploy my App on Server
         # run: |
