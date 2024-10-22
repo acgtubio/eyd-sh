@@ -37,7 +37,7 @@ jobs:
           key: '${{ secrets.PRIV_KEY }}'
           port: '${{ secrets.VPS_PORT }}'
           source: v2/main
-          target: ~/eyd-sh/
+          target: '${{ secrets.APP_DIR }}'
 
   # Deploy Job
   deploy:
@@ -65,7 +65,6 @@ jobs:
           port: 22
           script: |
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
-            cd eyd-sh/
+            cd ${{ secrets.APP_DIR }}
             git pull origin main
-            cd v2/
-            ./main
+            systemctl start ${{ secrets.SERVICE_NAME }}
