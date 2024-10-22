@@ -40,6 +40,16 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.PAT }}
+
+      - name: Copy-Build-Golang-App
+        uses: appleboy/scp-action@master
+        with:
+          host: '${{ secrets.VPS_IP }}'
+          username: '${{ secrets.UNAME }}'
+          key: '${{ secrets.PRIV_KEY }}'
+          port: '${{ secrets.VPS_PORT }}'
+          source: ./main
+          target: ~/eyd-sh/v2/
           
       - name: Set up SSH Key and Deploy my App on Server
         # run: |
@@ -57,6 +67,5 @@ jobs:
             cd eyd-sh/
             git pull origin main
             cd v2/
-            make build
             ./main
             sudo systemctl restart nginx
