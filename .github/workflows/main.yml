@@ -67,4 +67,4 @@ jobs:
             git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
             cd ${{ secrets.APP_DIR }}
             git pull origin main
-            systemctl start ${{ secrets.SERVICE_NAME }}
+            systemctl restart ${{ secrets.SERVICE_NAME }}
