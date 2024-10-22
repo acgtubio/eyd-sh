@@ -23,6 +23,11 @@ jobs:
           cd ./v2/
           go mod tidy
 
+      - name: Build App
+        run: |
+          cd ./v2/
+          make build
+
   # Deploy Job
   deploy:
    
