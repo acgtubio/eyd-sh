@@ -48,7 +48,7 @@ jobs:
           username: '${{ secrets.UNAME }}'
           key: '${{ secrets.PRIV_KEY }}'
           port: '${{ secrets.VPS_PORT }}'
-          source: ./main
+          source: v2/main
           target: ~/eyd-sh/v2/
           
       - name: Set up SSH Key and Deploy my App on Server
