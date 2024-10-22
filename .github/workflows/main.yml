@@ -37,7 +37,7 @@ jobs:
           key: '${{ secrets.PRIV_KEY }}'
           port: '${{ secrets.VPS_PORT }}'
           source: v2/main
-          target: ~/eyd-sh/v2/
+          target: ~/eyd-sh/
 
   # Deploy Job
   deploy:
@@ -69,4 +69,3 @@ jobs:
             git pull origin main
             cd v2/
             ./main
-            sudo systemctl restart nginx
