@@ -1,0 +1,70 @@
+name: CI/CD for EydSh
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  # Build Job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+          
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22.3'
+
+      - name: Install dependencies
+        run: |
+          cd ./v2/
+          go mod tidy
+
+      - name: Build App
+        run: |
+          cd ./v2/
+          make build
+          ls -l
+
+      - name: Copy-Build-Golang-App
+        uses: appleboy/scp-action@master
+        with:
+          host: '${{ secrets.VPS_IP }}'
+          username: '${{ secrets.UNAME }}'
+          key: '${{ secrets.PRIV_KEY }}'
+          port: '${{ secrets.VPS_PORT }}'
+          source: v2/main
+          target: '${{ secrets.APP_DIR }}'
+
+  # Deploy Job
+  deploy:
+   
+    needs: build
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          token: ${{ secrets.PAT }}
+          
+      - name: Set up SSH Key and Deploy my App on Server
+        # run: |
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.UNAME }}
+          key: ${{ secrets.PRIV_KEY }}
+          passphrase: ''
+          port: 22
+          script: |
+            git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
+            cd ${{ secrets.APP_DIR }}
+            git pull origin main
+            sudo systemctl restart ${{ secrets.SERVICE_NAME }}
