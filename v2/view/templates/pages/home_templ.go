@@ -95,7 +95,7 @@ func Home(content templ.Component) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"text-white flex w-full text-center justify-center py-16 flex-col\"><div class=\"relative\"><h1 class=\"font-bold text-6xl py-6 px-3 login-link-main\">Eyd.sh</h1><div class=\"login-link\"><a hx-get=\"/login\" hx-target=\"#content\">LOGIN</a></div></div><div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"text-white flex w-full text-center justify-center md:py-16 pt-10 pb-7 flex-col\"><div class=\"relative\"><h1 class=\"font-bold md:text-6xl text-3xl md:py-6 py-3 px-3 login-link-main\">Eyd.sh</h1><div class=\"login-link\"><a hx-get=\"/login\" hx-target=\"#content\">LOGIN</a></div></div><div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -103,7 +103,7 @@ func Home(content templ.Component) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section><section class=\"text-white w-full text-center justify-center pb-20 md:mx-auto md:p-0 px-10\" id=\"content\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section><section class=\"text-white w-full text-center justify-center pb-20 md:mx-auto md:p-0 px-5\" id=\"content\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

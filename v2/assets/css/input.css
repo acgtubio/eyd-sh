@@ -30,6 +30,7 @@
   opacity: 1;
 }
 
+
 :root {
   --x: 0;
   --y: 0;
@@ -47,48 +48,57 @@
       transparent) calc((var(--x) * 1px) - (var(--size) * 0.5)) calc((var(--y) * 1px) - (var(--size) * 0.5)) / var(--size) var(--size) no-repeat fixed;
 }
 
+@media screen and (min-width: 860px) {}
+
 .skills-item {
   border-radius: 1rem;
-  border: 1px solid transparent;
   /* box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset; */
   /* cursor: pointer; */
-  background:
-    linear-gradient(var(--bg), var(--bg)) padding-box,
-    /* linear-gradient(black, black) padding-box, */
-    var(--glow),
-    linear-gradient(black, black) border-box;
-  transition: background-size 0.24s;
-  touch-action: none;
+  border: 1px solid black;
+
+  @media screen and (min-width: 860px) {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--bg), var(--bg)) padding-box,
+      /* linear-gradient(black, black) padding-box, */
+      var(--glow),
+      linear-gradient(black, black) border-box;
+    transition: background-size 0.24s;
+    padding: 1rem 2rem;
+  }
+
   position: relative;
-  padding: 1rem 2rem;
+  padding: 0.5rem 0.5rem;
 }
 
-.skills-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  /* box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset; */
-  z-index: 2;
-  /* border: 4px solid transparent; */
-  border-radius: 1rem;
-}
+@media screen and (min-width: 860px) {
+  .skills-item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset; */
+    z-index: 2;
+    /* border: 4px solid transparent; */
+    border-radius: 1rem;
+  }
 
-.skills-item h1 {
-  background: var(--glow), black;
-  background-clip: text;
-  /* color: transparent; */
-  width: 100%;
-  z-index: 2;
-  position: relative;
-  inset: 0;
-}
+  .skills-item h1 {
+    background: var(--glow), black;
+    background-clip: text;
+    /* color: transparent; */
+    width: 100%;
+    z-index: 2;
+    position: relative;
+    inset: 0;
+  }
 
-.skills-item::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  filter: blur(40px);
-  border: 4px solid transparent;
-  background: var(--glow);
-  border-radius: 1rem;
+  .skills-item::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    filter: blur(40px);
+    border: 4px solid transparent;
+    background: var(--glow);
+    border-radius: 1rem;
+  }
 }

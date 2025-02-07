@@ -26,7 +26,7 @@ func Socials() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"text-4xl flex space-x-4 justify-center\"><a href=\"https://github.com/acgtubio\" target=\"_blank\"><i class=\"fa-brands fa-github\"></i></a> <a href=\"https://www.linkedin.com/in/adrian-christopher-tubio/\" target=\"_blank\"><i class=\"fa-brands fa-linkedin\"></i></a> <a href=\"https://x.com/eyyyyyyd\" target=\"_blank\"><i class=\"fa-brands fa-x-twitter\"></i></a> <a href=\"mailto:acgtubio@gmail.com\" target=\"_blank\"><i class=\"fa-solid fa-envelope\"></i></a></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"md:text-4xl text-xl flex space-x-4 justify-center\"><a href=\"https://github.com/acgtubio\" target=\"_blank\"><i class=\"fa-brands fa-github\"></i></a> <a href=\"https://www.linkedin.com/in/adrian-christopher-tubio/\" target=\"_blank\"><i class=\"fa-brands fa-linkedin\"></i></a> <a href=\"https://x.com/eyyyyyyd\" target=\"_blank\"><i class=\"fa-brands fa-x-twitter\"></i></a> <a href=\"mailto:acgtubio@gmail.com\" target=\"_blank\"><i class=\"fa-solid fa-envelope\"></i></a></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

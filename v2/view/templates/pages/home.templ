@@ -17,9 +17,9 @@ templ customScripts() {
 
 templ Home(content templ.Component) {
 	@shared.Index("Eyd.sh", customHeader(), customScripts()) {
-		<section class="text-white flex w-full text-center justify-center py-16 flex-col">
+		<section class="text-white flex w-full text-center justify-center md:py-16 pt-10 pb-7 flex-col">
 			<div class="relative">
-				<h1 class="font-bold text-6xl py-6 px-3 login-link-main">Eyd.sh</h1>
+				<h1 class="font-bold md:text-6xl text-3xl md:py-6 py-3 px-3 login-link-main">Eyd.sh</h1>
 				<div class="login-link">
 					<a hx-get="/login" hx-target="#content">LOGIN</a>
 				</div>
@@ -28,7 +28,7 @@ templ Home(content templ.Component) {
 				@partials.Socials()
 			</div>
 		</section>
-		<section class="text-white w-full text-center justify-center pb-20 md:mx-auto md:p-0 px-10" id="content">
+		<section class="text-white w-full text-center justify-center pb-20 md:mx-auto md:p-0 px-5" id="content">
 			@content
 		</section>
 	}
